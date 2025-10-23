@@ -53,22 +53,24 @@ public class Case02 {
 	@DisplayName("テスト02 DBに登録されていないユーザーでログイン")
 	void test02() throws Exception {
 
+		goTo("http://localhost:8080/lms/");
+		WebElement elm = webDriver.findElement(By.xpath("//h2[text()='ログイン']"));
+		assertEquals("ログイン", elm.getText());
+
 		//要素の取得と入力
-		WebElement userName = webDriver.findElement(By.className("loginId"));
-		WebElement password = webDriver.findElement(By.className("password"));
+		WebElement userName = webDriver.findElement(By.name("loginId"));
+		WebElement password = webDriver.findElement(By.name("password"));
 		//存在しない値を入力（入力制限に引っかかるワードなのでログインは不可能）
-		userName.clear();
-		password.clear();
 		userName.sendKeys("hoge");
 		password.sendKeys("hoge");
 
 		//ログインボタンをクリック
-		WebElement doLogin = webDriver.findElement(By.cssSelector("button[type='submit']"));
+		WebElement doLogin = webDriver.findElement(By.className("btn-primary"));
 		doLogin.click();
 
 		//エラーをキャッチ
-		WebElement catchErrorElement = webDriver.findElement(By.className("help-inline error"));
-		assertEquals("ログインに失敗しました。", catchErrorElement.getText());
+		WebElement catchErrorElement = webDriver.findElement(By.className("error"));
+		assertEquals("* ログインに失敗しました。", catchErrorElement.getText());
 		//エビデンスを取得
 		getEvidence(new Object() {
 		});
