@@ -75,8 +75,6 @@ public class Case02 {
 		getEvidence(new Object() {
 		});
 
-		// 開いたページのキャプチャを取得する
-
 	}
 
 }
