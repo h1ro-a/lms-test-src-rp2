@@ -24,8 +24,14 @@ public class WebDriverUtils {
 	/** Webドライバ */
 	public static WebDriver webDriver;
 
-	//** IDとパスワード（初回ログイン済）　*/
+	/** 
+	 * IDとパスワード（初回ログイン済）
+	 * @return ID(String型）
+	 * */
 	public static final String ID = "StudentAA03";
+	/** 
+	 * @return password(String型)
+	 * */
 	public static final String PASSWORD = "Password333";
 
 	/**
