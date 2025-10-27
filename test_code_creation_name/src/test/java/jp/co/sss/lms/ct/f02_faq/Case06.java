@@ -137,13 +137,16 @@ public class Case06 {
 		assertEquals("カテゴリ検索", ctgrySearch.getText());
 
 		//カテゴリ検索のリンクのクリック
-		WebElement ctgryLink = webDriver.findElement(By.xpath("//a[text()='【研修関係】]"));
+		WebElement ctgryLink = webDriver.findElement(By.linkText("【研修関係】"));
 		ctgryLink.click();
+
+		//要素が表示されるまで待つ(5秒）
+		pageLoadTimeout(5);
 
 		//表示された要素の判定
 		List<WebElement> elms = webDriver.findElements(By.className("sorting_1"));
-		assertEquals("キャンセル料・途中退校について", elms.get(0).getText());
-		assertEquals("研修の申し込みはどのようにすれば良いですか？", elms.get(1).getText());
+		assertEquals("Q.キャンセル料・途中退校について", elms.get(0).getText());
+		assertEquals("Q.研修の申し込みはどのようにすれば良いですか？", elms.get(1).getText());
 
 		//エビデンスを取得
 		getEvidence(new Object() {
@@ -155,12 +158,16 @@ public class Case06 {
 	@Order(6)
 	@DisplayName("テスト06 検索結果の質問をクリックしその回答を表示")
 	void test06() {
-		//
-		final String ELMSTRCANCEL = "受講者の退職や解雇等、やむを得ない事情による途中終了に関してなど、事情をお伺いした上で、協議という形を取らせて頂きます。\n"
-				+ "弊社営業担当までご相談下さい。";
-		final String ELMSTRENTRY = "営業担当がいる場合は、営業担当までご連絡ください。\n"
-				+ "申し込み方法についてご案内させていただきます。\n"
-				+ "なお、弊社営業営業がいない場合は、東京ITスクール運営事務局までご連絡いただけると幸いです。";
+
+		//質問の要素の取得とクリック
+		List<WebElement> elms = webDriver.findElements(By.className("fs18"));
+		for (WebElement elm : elms) {
+			assertTrue(elm.getText().contains("A."));
+		}
+
+		//エビデンスを取得
+		getEvidence(new Object() {
+		});
 
 	}
 
