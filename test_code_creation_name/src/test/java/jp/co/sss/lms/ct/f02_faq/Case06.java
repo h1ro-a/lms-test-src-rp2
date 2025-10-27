@@ -160,10 +160,19 @@ public class Case06 {
 	void test06() {
 
 		//質問の要素の取得とクリック
+		List<WebElement> faqResults = webDriver.findElements(By.className("sorting_1"));
+		for (WebElement elm : faqResults) {
+			elm.click();
+		}
+
+		//クリックして表示された文言が想定通りか判別
 		List<WebElement> elms = webDriver.findElements(By.className("fs18"));
 		for (WebElement elm : elms) {
 			assertTrue(elm.getText().contains("A."));
 		}
+
+		//展開した要素の下部までエビデンスとして取得できる用にスクロール
+		scrollBy("200");
 
 		//エビデンスを取得
 		getEvidence(new Object() {
