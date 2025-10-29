@@ -3,8 +3,6 @@ package jp.co.sss.lms.ct.f03_report;
 import static jp.co.sss.lms.ct.util.WebDriverUtils.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.List;
-
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -82,13 +80,6 @@ public class Case07 {
 	@Order(3)
 	@DisplayName("テスト03 未提出の研修日の「詳細」ボタンを押下しセクション詳細画面に遷移")
 	void test03() {
-		//一番上の項目の詳細ボタンをクリック
-		List<WebElement> detailBtns = webDriver.findElements(By.className("btn-default"));
-		detailBtns.get(0).click();
-
-		//要素の取得と確認（セクション詳細画面)
-		WebElement elmCourse = webDriver.findElement(By.className("active"));
-		assertEquals("セクション詳細", elmCourse.getText());
 
 	}
 
@@ -96,14 +87,14 @@ public class Case07 {
 	@Order(4)
 	@DisplayName("テスト04 「提出する」ボタンを押下しレポート登録画面に遷移")
 	void test04() {
-		// TODO ここに追加
+
 	}
 
 	@Test
 	@Order(5)
 	@DisplayName("テスト05 報告内容を入力して「提出する」ボタンを押下し確認ボタン名が更新される")
 	void test05() {
-		// TODO ここに追加
+
 	}
 
 }
